@@ -42,3 +42,11 @@ input.snakeCased()      // "this_is_not_very_difficult"
 "keynote_event".isSnakeCase         // true
 ```
 
+## Contact
+
+* Devran "Cosmo" Uenal
+* Twitter: [@maccosmo](http://twitter.com/maccosmo)
+
+## License
+
+StringCase is released under the [MIT License](http://www.opensource.org/licenses/MIT).
