@@ -4,6 +4,8 @@ Converts `String` to `lowerCamelCase`, `UpperCamelCase` and `snake_case`.
 
 ## Usage
 
+### Transformation
+
 ```swift
 let input = "Keynote Event"
 
@@ -20,22 +22,21 @@ input.upperCamelCased() // "ThisIsNotVeryDifficult"
 input.snakeCased()      // "this_is_not_very_difficult"
 ```
 
+### Boolean checks
+
 ```swift
-// Boolean check if String is lower camel cased
 "KeynoteEvent".isLowerCamelCased    // false
 "keynoteEvent".isLowerCamelCased    // true
 "keynote_event".isLowerCamelCased   // false
 ```
 
 ```swift
-// Boolean check if String is upper camel cased
 "KeynoteEvent".isUpperCamelCased    // true
 "keynoteEvent".isUpperCamelCased    // false
 "keynote_event".isUpperCamelCased   // false
 ```
 
 ```swift
-// Boolean check if String snake case
 "KeynoteEvent".isSnakeCase          // false
 "keynoteEvent".isSnakeCase          // false
 "keynote_event".isSnakeCase         // true
