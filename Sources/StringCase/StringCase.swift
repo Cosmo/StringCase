@@ -51,11 +51,6 @@ public extension String {
         }
         return false
     }
-    
-    /// Checks if all characters are letters
-    private var isAllLetters: Bool {
-        return self.allSatisfy({ $0.isLetter })
-    }
 }
 
 public extension String {
