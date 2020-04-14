@@ -15,6 +15,21 @@ public extension String {
         // Strip all underscores and check if the rest is lowercase
         return self.filter{ $0 != "_" }.allSatisfy { $0.isLowercase }
     }
+
+    /// A Boolean value indicating whether this string is considered kebab case.
+    ///
+    /// For example, the following strings are all kebab case:
+    ///
+    /// - "kebab-case"
+    /// - "example"
+    /// - "date-formatter"
+    ///
+    /// String can contain lowercase letters and dashes only.
+    /// In kebab case, words are separated by dashes.
+    var isKebabCase: Bool {
+        // Strip all dashes and check if the rest is lowercase
+        return self.filter{ $0 != "-" }.allSatisfy { $0.isLowercase }
+    }
     
     /// A Boolean value indicating whether this string is considered lower camel case.
     ///
@@ -121,5 +136,19 @@ public extension String {
     func snakeCased() -> String {
         if self.isSnakeCase { return self }
         return lowercasedStrings().map{ $0.lowercased() }.joined(separator: "_")
+    }
+
+    /// Returns kebab case version of the string.
+    ///
+    /// Here's an example of transforming a string to kebab case.
+    ///
+    ///     let event = "Keynote Event"
+    ///     print(event.kebabCased())
+    ///     // Prints "keynote-event"
+    ///
+    /// - Returns: A kebab case copy of the string.
+    func kebabCased() -> String {
+        if self.isKebabCase { return self }
+        return lowercasedStrings().map{ $0.lowercased() }.joined(separator: "-")
     }
 }
