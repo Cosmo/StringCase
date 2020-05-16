@@ -13,7 +13,9 @@ public extension String {
     /// In snake case, words are separated by underscores.
     var isSnakeCase: Bool {
         // Strip all underscores and check if the rest is lowercase
-        return self.filter{ $0 != "_" }.allSatisfy { $0.isLowercase }
+        return self
+            .filter { $0 != "_" }
+            .allSatisfy(\.isLowercase)
     }
 
     /// A Boolean value indicating whether this string is considered kebab case.
@@ -28,7 +30,9 @@ public extension String {
     /// In kebab case, words are separated by dashes.
     var isKebabCase: Bool {
         // Strip all dashes and check if the rest is lowercase
-        return self.filter{ $0 != "-" }.allSatisfy { $0.isLowercase }
+        return self
+            .filter { $0 != "-" }
+            .allSatisfy(\.isLowercase)
     }
     
     /// A Boolean value indicating whether this string is considered lower camel case.
@@ -43,10 +47,11 @@ public extension String {
     /// In lower camel case, words are separated by uppercase letters.
     var isLowerCamelCase: Bool {
         // Check if the first character is lowercase and the rest contains letters
-        if let firstCharacter = self.first, firstCharacter.isLowercase && self.allSatisfy { $0.isLetter } {
-            return true
+        if let firstCharacter = self.first {
+            return firstCharacter.isLowercase && self.allSatisfy(\.isLetter)
+        } else {
+            return false
         }
-        return false
     }
     
     /// A Boolean value indicating whether this string is considered upper camel case.
@@ -61,10 +66,11 @@ public extension String {
     /// In upper camel case, words are separated by uppercase letters.
     var isUpperCamelCase: Bool {
         // Check if the first character is uppercase and the rest contains letters
-        if let firstCharacter = self.first, firstCharacter.isUppercase && self.allSatisfy { $0.isLetter } {
-            return true
+        if let firstCharacter = self.first {
+            return firstCharacter.isUppercase && self.allSatisfy(\.isLetter)
+        } else {
+            return false
         }
-        return false
     }
 }
 
@@ -89,7 +95,7 @@ public extension String {
             lastCharacter = character
         }
         
-        return results.map { $0.capitalized }
+        return results.map(\.capitalized)
     }
     
     /// Returns a lower camel case version of the string.
@@ -135,7 +141,9 @@ public extension String {
     /// - Returns: A snake case copy of the string.
     func snakeCased() -> String {
         if self.isSnakeCase { return self }
-        return lowercasedStrings().map{ $0.lowercased() }.joined(separator: "_")
+        return lowercasedStrings()
+            .map { $0.lowercased() }
+            .joined(separator: "_")
     }
 
     /// Returns kebab case version of the string.
@@ -149,6 +157,8 @@ public extension String {
     /// - Returns: A kebab case copy of the string.
     func kebabCased() -> String {
         if self.isKebabCase { return self }
-        return lowercasedStrings().map{ $0.lowercased() }.joined(separator: "-")
+        return lowercasedStrings()
+            .map { $0.lowercased() }
+            .joined(separator: "-")
     }
 }
